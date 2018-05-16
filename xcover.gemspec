@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Generate the xccov report in html format}
   spec.description   = %q{Generate the xccov report in html format}
-  spec.homepage      = 'https://nimbl3.com/' # TODO: Changed to github repo
+  spec.homepage      = 'https://github.com/nimbl3/xcover'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

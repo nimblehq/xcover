@@ -7,7 +7,7 @@ Generate a HTML page from Xcode unit test coverage statistics
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'xcover'
+gem 'xcover', git: 'https://github.com/nimbl3/xcover'
 ```
 
 And then execute:
@@ -16,7 +16,9 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install xcover
+    $ gem install xcover --source https://github.com/nimbl3/xcover
+    
+**This gem required `xccov` command line tools installed in your machine**
 
 ## Usage
 
@@ -42,7 +44,7 @@ Xcover::Html.new.generate
 For the custom config file, pass the name/path when instantiate the class
 
 ```ruby
-Xcover::Html.new('xcover_config.yml').generate
+Xcover::Html.new('config/xcover_config.yml').generate
 ```
 
 ## License
