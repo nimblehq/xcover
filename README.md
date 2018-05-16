@@ -37,8 +37,9 @@ ignore: # - Ignorance list contains UNIX files and path formats
 To generate the html page
 
 ```ruby
-# This takes the default config file named `xcover.yml`
-Xcover::Html.new.generate
+require 'xcover'
+
+Xcover::Html.new.generate # This takes the default config file named `xcover.yml`
 ```
 
 For the custom config file, pass the name/path when instantiate the class
