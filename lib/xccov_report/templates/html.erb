@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title><%= target_name %> code coverage</title>
+  <style type="text/css">
+    body {
+    }
+  </style>
+</head>
+<body>
+
+<h3 class="target-name"><%= target_name %></h3>
+<p class="target-code-coverage">Code coverage: <%= code_coverage_percentage %></p>
+<% unless filtered_files.empty? %>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Line coverage</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% filtered_files.each do |file| %>
+      <tr>
+        <td class="file-name"><%= file['name'] %></td>
+        <td class="file-coverage"><%= file['lineCoveragePercentage'] %>%</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+</body>
+</html>
+
+
