@@ -2,4 +2,5 @@
 
 require 'xcover'
 
+# TODO: Pass more options to the command line e.g. config file path, format to generate
 Xcover::Html.new.generate
