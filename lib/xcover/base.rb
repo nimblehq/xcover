@@ -1,9 +1,9 @@
 require 'yaml'
 require 'json'
 
-module XccovReport
+module Xcover
   class Base
-    def initialize(config_file_path = 'xccov_report.yml')
+    def initialize(config_file_path = 'xcover.yml')
       @config_file_path = config_file_path
       @filtered_files = filtered_files
     end

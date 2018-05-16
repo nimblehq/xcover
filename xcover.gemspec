@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'xccov_report/version'
+require 'xcover/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'xccov-report'
-  spec.version       = XccovReport::VERSION
+  spec.name          = 'xcover'
+  spec.version       = Xcover::VERSION
   spec.authors       = ['Nimbl3']
   spec.email         = ['dev@nimbl3.com']
 

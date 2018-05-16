@@ -15,4 +15,4 @@
 # Custom
 /output/
 /result.json
-/xccov_report.yml
+/xcover.yml

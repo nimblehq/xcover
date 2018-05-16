@@ -1,7 +1,7 @@
 require 'erb'
 
-module XccovReport
-  class Html < ::XccovReport::Base
+module Xcover
+  class Html < Base
     def generate
       dir = Dir.exist?(output_dir) ? Dir.open(output_dir) : Dir.mkdir(output_dir)
 

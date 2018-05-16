@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class XccovReportTest < Minitest::Test
+class XcoverTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::Xccov::Report::VERSION
+    refute_nil ::Xcover::VERSION
   end
 
   def test_it_does_something_useful
