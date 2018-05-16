@@ -34,9 +34,9 @@ ignore: # - Ignorance list contains UNIX files and path formats
 /Pods
 ```
 
-To generate the HTML page
+To generate the HTML page, there are 2 ways, either using through CLI or Ruby class
 
-- CLI Usage
+#### CLI Usage
 
 The command will take a default config file named `xcover.yml` and generate the HTML report page to the output directory
 
@@ -44,7 +44,7 @@ The command will take a default config file named `xcover.yml` and generate the 
 xcover
 ```
 
-- Ruby Usage
+#### Ruby Usage
 
 ```ruby
 require 'xcover'
