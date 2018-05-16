@@ -1,3 +1,4 @@
+*.gem
 /.bundle/
 /.yardoc
 /Gemfile.lock
@@ -7,3 +8,11 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+# Ignore IDE folders
+.idea
+
+# Custom
+/output/
+/result.json
+/xccov_report.yml
