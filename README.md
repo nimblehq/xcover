@@ -1,8 +1,6 @@
 # Xcover
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/xccov/report`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generate a HTML page from Xcode unit test coverage statistics
 
 ## Installation
 
@@ -18,24 +16,47 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install xccov-report
+    $ gem install xcover
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a yml configuration - `xcover.yml`
 
-## Development
+```yaml
+target_name: “Target Name” # - name of target for xccov
+derived_data_directory: derivedDara # - path to Derived Data
+output_directory: output # - path to HTML files output directory
+ignore: # - Ignorance list contains UNIX files and path formats
+*View.*
+*Cell.*
+/Pods
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+To generate the html page
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+# This takes the default config file named `xcover.yml`
+Xcover::Html.new.generate
+```
 
-## Contributing
+For the custom config file, pass the name/path when instantiate the class
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/xcover. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+```ruby
+Xcover::Html.new('xcover_config.yml').generate
+```
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+## About
+
+![Nimbl3](https://dtvm7z6brak4y.cloudfront.net/logo/logo-repo-readme.jpg)
+
+This project is maintained and funded by Nimbl3 Ltd.
+
+We love open source and do our part in sharing our work with the community!
+See [our other projects][community] or [hire our team][hire] to help build your product.
+
+[community]: https://github.com/nimbl3
+[hire]: https://nimbl3.com/
