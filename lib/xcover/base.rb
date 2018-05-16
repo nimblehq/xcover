@@ -1,11 +1,11 @@
-require 'yaml'
-require 'json'
-
 module Xcover
   class Base
+    extend Forwardable
+
+    def_delegators :config, :target_name, :derived_data_dir, :output_dir, :ignored_patterns
+
     def initialize(config_file_path = 'xcover.yml')
-      @config_file_path = config_file_path
-      @filtered_files = filtered_files
+      @config ||= Config.new(config_file_path)
     end
 
     def generate
@@ -13,7 +13,7 @@ module Xcover
       puts "Target Name: #{target_name}"
       puts "Code Coverage: #{code_coverage_percentage}%"
       puts '-----------------------------------------'
-      filtered_files.map {|file| puts "#{file['name']} #{file['lineCoveragePercentage']}%"}
+      processed_report_files.map {|file| puts "#{file['name']} #{file['lineCoveragePercentage']}%"}
       puts
 
       true
@@ -21,57 +21,53 @@ module Xcover
 
     private
 
-    attr_reader :config_file_path
-
-    def target_name
-      config['target_name']
-    end
-
-    def derived_data_directory
-      config['derived_data_directory']
-    end
-
-    def output_dir
-      config['output_directory']
-    end
+    attr_reader :config, :cache_processed_report_files
 
     def code_coverage_percentage
-      "#{code_coverage.round(2)}%"
-    end
-
-    def code_coverage
-      total_covered_lines.to_f / total_executable_lines * 100
+      (total_covered_lines.to_f / total_executable_lines * 100).round(2)
     end
 
     def total_covered_lines
-      filtered_files.inject(0) {|sum, file| sum + file['coveredLines']}
+      processed_report_files.inject(0) {|sum, file| sum + file['coveredLines']}
     end
 
     def total_executable_lines
-      filtered_files.inject(0) {|sum, file| sum + file['executableLines']}
+      processed_report_files.inject(0) {|sum, file| sum + file['executableLines']}
     end
 
-    def filtered_files
-      files = raw_report['files']
+    def processed_report_files
+      return cache_processed_report_files unless cache_processed_report_files.nil?
 
+      report_files = raw_report.fetch('files', [])
+      processed_ignored_patterns = ignored_patterns&.map { |pattern| glob_pattern(pattern) }&.uniq || []
+
+      @cache_processed_report_files ||= assign_line_coverage_percentage(filtered_report_files(report_files, processed_ignored_patterns))
+    end
+
+    def filtered_report_files(files, ignored_patterns)
       ignored_patterns.each do |pattern|
         files.reject! {|file| File.fnmatch(pattern, file['path'])}
       end
 
-      files.map { |file| file['lineCoveragePercentage'] = (file['lineCoverage'] * 100).round(2) }
       files
     end
 
-    def ignored_patterns
-      @ignored_patterns ||= config['ignore']&.map {|pattern| pattern.end_with?('/') ? "*#{pattern}*" : pattern} || []
+    def assign_line_coverage_percentage(files)
+      files.each { |file| file['lineCoveragePercentage'] = (file['lineCoverage'] * 100).round(2) }
+
+      files
     end
 
-    def config
-      @config ||= OpenStruct.new(YAML.load_file(config_file_path))
+    def glob_pattern(pattern)
+      return "*#{pattern}*" if pattern.end_with?('/') && pattern.start_with?('/')
+      return "*/#{pattern}*" if pattern.end_with?('/')
+      return "*#{pattern}/*" if pattern.start_with?('/')
+
+      pattern
     end
 
     def raw_report
-      report_result = %x(xcrun xccov view --files-for-target "#{target_name}" #{derived_data_directory} --json)
+      report_result = %x(xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir} --json)
       @raw_report ||= JSON.parse(report_result)
     end
   end

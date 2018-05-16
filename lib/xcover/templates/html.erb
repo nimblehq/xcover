@@ -9,8 +9,8 @@
 <body>
 
 <h3 class="target-name"><%= target_name %></h3>
-<p class="target-code-coverage">Code coverage: <%= code_coverage_percentage %></p>
-<% unless filtered_files.empty? %>
+<p class="target-code-coverage">Code coverage: <%= code_coverage_percentage %>%</p>
+<% unless processed_report_files.empty? %>
   <table>
     <thead>
       <tr>
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-    <% filtered_files.each do |file| %>
+    <% processed_report_files.each do |file| %>
       <tr>
         <td class="file-name"><%= file['name'] %></td>
         <td class="file-coverage"><%= file['lineCoveragePercentage'] %>%</td>

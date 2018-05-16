@@ -1,0 +1,33 @@
+{
+  "product": "/Volumes/Neverland/Development/iOS/RedPlanetHotels/derivedData/Build/Products/Debug-iphonesimulator/RP Staging.app/RP Staging",
+  "files": [
+    {
+      "coveredLines": 40,
+      "lineCoverage": 0,
+      "path": "/Volumes/Neverland/Development/iOS/RedPlanetHotels/Red Planet/Red Planet/Sources/Controllers/Attractions/Detail/LocalAttractionDetailInfoModel.swift",
+      "name": "LocalAttractionDetailInfoModel.swift",
+      "executableLines": 47
+    },
+    {
+      "coveredLines": 10,
+      "lineCoverage": 0.5,
+      "path": "/Volumes/Neverland/Development/iOS/RedPlanetHotels/Red Planet/Red Planet/Sources/Controllers/Attractions/Detail/LocalAttractionListModel.swift",
+      "name": "LocalAttractionListModel.swift",
+      "executableLines": 20
+    },
+    {
+      "coveredLines": 90,
+      "lineCoverage": 0,
+      "path": "/Volumes/Neverland/Development/iOS/RedPlanetHotels/Red Planet/Red Planet/Sources/Controllers/Attractions/AttractionCell.swift",
+      "name": "AttractionCell.swift",
+      "executableLines": 100
+    },
+    {
+      "coveredLines": 70,
+      "lineCoverage": 0.1,
+      "path": "/Volumes/Neverland/Development/iOS/RedPlanetHotels/Red Planet/Red Planet/Sources/Controllers/Attractions/AttractionList.swift",
+      "name": "AttractionList.swift",
+      "executableLines": 70
+    }
+  ]
+}
