@@ -71,9 +71,8 @@ module Xcover
     end
 
     def raw_report
-      # TODO: Execute xccov and parse the json result here
-      # report_result = %x(xcrun xccov view --files-for-target "#{target_name}" #{derived_data_directory} --json)
-      @raw_report ||= JSON.parse(File.read('result.json'))
+      report_result = %x(xcrun xccov view --files-for-target "#{target_name}" #{derived_data_directory} --json)
+      @raw_report ||= JSON.parse(report_result)
     end
   end
 end
