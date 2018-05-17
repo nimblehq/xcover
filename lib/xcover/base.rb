@@ -21,7 +21,7 @@ module Xcover
 
     private
 
-    attr_reader :config, :cache_processed_report_files
+    attr_reader :config, :cached_processed_report_files
 
     def code_coverage_percentage
       (total_covered_lines.to_f / total_executable_lines * 100).round(2)
@@ -36,12 +36,12 @@ module Xcover
     end
 
     def processed_report_files
-      return cache_processed_report_files unless cache_processed_report_files.nil?
+      return cached_processed_report_files unless cached_processed_report_files.nil?
 
       report_files = raw_report.fetch('files', [])
       processed_ignored_patterns = ignored_patterns&.map { |pattern| glob_pattern(pattern) }&.uniq || []
 
-      @cache_processed_report_files ||= assign_line_coverage_percentage(filtered_report_files(report_files, processed_ignored_patterns))
+      @cached_processed_report_files ||= assign_line_coverage_percentage(filtered_report_files(report_files, processed_ignored_patterns))
     end
 
     def filtered_report_files(files, ignored_patterns)
