@@ -7,25 +7,27 @@ describe Xcover::Base do
       allow(Xcover::Config).to receive(:new).and_return(config)
       allow(config).to receive(:ignored_patterns).and_return(['*Model.*'])
       allow_any_instance_of(subject.class).to receive(:raw_report).and_return(
-        {
-          "files" => [
-            {
-              "lineCoverage" => 0.1,
-              "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
-              "name" => 'LocalAttractionDetailInfoModel.swift',
-            },
-            {
-              "lineCoverage" => 0.2,
-              "path" => 'RedPlanet/Detail/LocalAttractionListModel.swift',
-              "name" => 'LocalAttractionListModel.swift',
-            },
-            {
-              "lineCoverage" => 0.3,
-              "path" => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
-              "name" => 'LocalAttractionTableViewCell.swift',
-            }
-          ]
-        }
+        [
+          {
+            "files" => [
+              {
+                "lineCoverage" => 0.1,
+                "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
+                "name" => 'LocalAttractionDetailInfoModel.swift',
+              },
+              {
+                "lineCoverage" => 0.2,
+                "path" => 'RedPlanet/Detail/LocalAttractionListModel.swift',
+                "name" => 'LocalAttractionListModel.swift',
+              },
+              {
+                "lineCoverage" => 0.3,
+                "path" => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
+                "name" => 'LocalAttractionTableViewCell.swift',
+              }
+            ]
+          }
+        ]
       )
       processed_files = subject.send('processed_report_files')
 

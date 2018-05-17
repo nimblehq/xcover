@@ -38,7 +38,7 @@ module Xcover
     def processed_report_files
       return cached_processed_report_files unless cached_processed_report_files.nil?
 
-      report_files = raw_report.fetch('files', [])
+      report_files = raw_report.first.fetch('files', [])
       processed_ignored_patterns = ignored_patterns&.map { |pattern| glob_pattern(pattern) }&.uniq || []
 
       @cached_processed_report_files ||= assign_line_coverage_percentage(filtered_report_files(report_files, processed_ignored_patterns))
