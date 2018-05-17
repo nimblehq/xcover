@@ -67,7 +67,7 @@ module Xcover
     end
 
     def raw_report
-      report_result = %x(xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir} --json)
+      report_result = `xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir} --json`
       @raw_report ||= JSON.parse(report_result)
     end
   end
