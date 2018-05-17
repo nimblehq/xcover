@@ -4,8 +4,8 @@ module Xcover
 
     def_delegators :config, :target_name, :derived_data_dir, :output_dir, :ignored_patterns
 
-    def initialize(config_file_path = 'xcover.yml')
-      @config ||= Config.new(config_file_path)
+    def initialize(config_file_path = '.xcover.yml')
+      @config = Config.new(config_file_path)
     end
 
     def generate

@@ -15,4 +15,4 @@
 # Custom
 /output/
 /result.json
-/xcover.yml
+/.xcover.yml
