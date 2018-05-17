@@ -1,6 +1,0 @@
-target_name: RP Staging.app # - name of target for xccov
-derived_data_directory: /Users/rossukhon/Downloads/derivedData/Logs/Test/A16C4B2D-FE64-4044-9312-EFE58D3E0EB7.xccovreport # - path to Derived Data
-output_directory: output # - path to HTML files output directory
-ignore: # - Ignorance list contains UNIX files and path formats
-  - '*View.*'
-  - '*Cell.*'

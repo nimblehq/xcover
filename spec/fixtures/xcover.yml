@@ -1,6 +1,6 @@
 target_name: RP Staging.app
 derived_data_directory: /derivedData/Logs/Test/A16C4B2D-FE64-4044-9312-EFE58D3E0EB7.xccovreport
-output_directory: output2
+output_directory: output
 ignore:
   - '*View.*'
   - '*Cell.*'
