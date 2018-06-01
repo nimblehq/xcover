@@ -11,7 +11,7 @@ describe Xcover::Config do
     it 'returns a derived data directory configuration' do
       configuration = described_class.new('spec/fixtures/xcover.yml')
 
-      expect(configuration.send('derived_data_dir')).to eq mocked_configuration['derived_data_directory']
+      expect(configuration.send('derived_data_dir')).to eq "#{mocked_configuration['derived_data_directory']}/Logs/Test/*.xccovreport"
     end
   end
 
