@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Create a yml configuration - `xcover.yml`
+Create a yml configuration - `.xcover.yml`
 
 ```yaml
 target_name: “Target Name” # - name of target for xccov
