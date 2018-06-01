@@ -25,9 +25,11 @@ Or install it yourself as:
 Create a yml configuration - `.xcover.yml`
 
 ```yaml
-target_name: “Target Name” # - name of target for xccov
-derived_data_directory: derivedDara # - path to Derived Data
-output_directory: output # - path to HTML files output directory
+target_name: Target Name # - Name of target for xccov
+display_name: My awesome app # - (Optional) Display name of the target on the report
+display_logo: logo.png # - (Optional) A url or path to the logo for displaying on the report
+derived_data_directory: derivedDara # - Path to Derived Data
+output_directory: output # - Path to HTML files output directory
 ignore: # - Ignorance list contains UNIX files and path formats
 *View.*
 *Cell.*

@@ -1,125 +1,17 @@
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= target_name %> code coverage</title>
-  <style type="text/css">
-    html, body {
-      width: 100%;
-    }
-
-    body {
-      margin: 1rem 0;
-      font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
-    }
-
-    header {
-      text-align: center;
-    }
-
-    header .logo {
-      width: auto;
-      height: 150px;
-    }
-
-    h1 {
-      font-size: 50px;
-    }
-
-    h2 {
-      font-size: 30px;
-    }
-
-    main {
-      margin: 2rem auto;
-      width: 70%;
-    }
-
-    @media only screen and (max-width: 768px) {
-      main {
-        margin: 0;
-        padding: 2rem 1rem;
-        width: 100%;
-      }
-    }
-
-    .table-coverage {
-      width: 100%;
-    }
-
-    /* TODO: Fix text wrapping on small screen */
-    td.file-name span {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    td.file-coverage,
-    td.file-coverage-progress {
-      text-align: right;
-    }
-
-    td.file-coverage {
-      width: 1%;
-    }
-
-    td.file-coverage-progress {
-      width: 30%;
-    }
-
-    @media only screen and (max-width: 768px) {
-      td.file-coverage-progress {
-        display: none;
-      }
-    }
-
-    .progress {
-      height: 10px;
-      background-color: #ededed;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .progress .progress-bar {
-      display: block;
-      height: 100%;
-      background-color: #549ef3;
-
-    }
-
-    th, td {
-      padding: 5px;
-      border-bottom: 1px solid #ededed;
-    }
-
-    .file-name::before {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      vertical-align: sub;
-    }
-
-    .file-name.ext-swift::before {
-      background-image: url('images/ext-swift.png');
-    }
-
-    .file-name.ext-h::before {
-      background-image: url('images/ext-h.png');
-    }
-
-    .file-name.ext-m::before {
-      background-image: url('images/ext-m.png');
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
 <header>
-  <img class="logo" src="logo.jpg" alt=""/>
-  <h1 class="target-name"><%= target_name %></h1>
+  <% if display_logo %>
+    <img class="logo" src="<%= display_logo %>" alt=""/>
+  <% end %>
+  <h1 class="target-name"><%= display_name || target_name %></h1>
   <h2 class="target-code-coverage">Code coverage: <%= code_coverage_percentage %>%</h2>
 </header>
 
