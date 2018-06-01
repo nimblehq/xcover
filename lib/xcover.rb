@@ -8,5 +8,4 @@ module Xcover
   autoload :Base, 'xcover/base'
   autoload :Html, 'xcover/html'
   autoload :Config, 'xcover/config'
-  autoload :Utils, 'xcover/utils'
 end
