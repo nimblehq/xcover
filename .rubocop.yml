@@ -1,9 +1,11 @@
 AllCops:
   Exclude:
+    - 'vendor/**/*'
     - 'bin/**/*'
     - 'Gemfile'
     - 'Gemfile.lock'
     - 'Rakefile'
+    - 'node_modules/**/*'
     - 'config/**/*'
   TargetRubyVersion: 2.4
 
