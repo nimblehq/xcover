@@ -1,33 +1,45 @@
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= target_name %> code coverage</title>
-  <style type="text/css">
-    body {
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
-<h3 class="target-name"><%= target_name %></h3>
-<p class="target-code-coverage">Code coverage: <%= code_coverage_percentage %>%</p>
-<% unless processed_report_files.empty? %>
-  <table>
-    <thead>
+<header>
+  <% if display_logo %>
+    <img class="logo" src="<%= display_logo %>" alt=""/>
+  <% end %>
+  <h1 class="target-name"><%= display_name || target_name %></h1>
+  <h2 class="target-code-coverage">Code coverage: <%= code_coverage_percentage %>%</h2>
+</header>
+
+<main>
+  <% unless processed_report_files.empty? %>
+    <table class="table-coverage" cellpadding="0" cellspacing="0">
+      <thead>
       <tr>
-        <th>File</th>
-        <th>Line coverage</th>
+        <th class="col-file" align="left">Name</th>
+        <th class="col-coverage" align="right" colspan="2">Line coverage</th>
       </tr>
-    </thead>
-    <tbody>
-    <% processed_report_files.each do |file| %>
-      <tr>
-        <td class="file-name"><%= file['name'] %></td>
-        <td class="file-coverage"><%= file['lineCoveragePercentage'] %>%</td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
+      </thead>
+      <tbody>
+      <% processed_report_files.each do |file| %>
+        <tr>
+          <td class="file-name ext-<%= File.extname(file['name'])&.delete('.') %>"><span><%= file['name'] %></span></td>
+          <td class="file-coverage-progress">
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= file['lineCoveragePercentage'] %>%"></div>
+            </div>
+          </td>
+          <td class="file-coverage"><%= file['lineCoveragePercentage'] %>%</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</main>
 
 </body>
 </html>

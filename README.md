@@ -22,12 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-Create a yml configuration - `xcover.yml`
+Create a yml configuration - `.xcover.yml`
 
 ```yaml
-target_name: “Target Name” # - name of target for xccov
-derived_data_directory: derivedDara # - path to Derived Data
-output_directory: output # - path to HTML files output directory
+target_name: Target Name # - Name of target for xccov
+display_name: My awesome app # - (Optional) Display name of the target on the report
+display_logo: logo.png # - (Optional) A url or path to the logo for displaying on the report
+derived_data_directory: derivedDara # - Path to Derived Data
+output_directory: output # - Path to HTML files output directory
 ignore: # - Ignorance list contains UNIX files and path formats
 *View.*
 *Cell.*
@@ -38,7 +40,7 @@ To generate the HTML page, there are 2 ways, either using through CLI or Ruby cl
 
 #### CLI Usage
 
-The command will take a default config file named `xcover.yml` and generate the HTML report page to the output directory
+The command will take a default config file named `.xcover.yml` and generate the HTML report page to the output directory
 
 ```
 xcover
@@ -49,7 +51,7 @@ xcover
 ```ruby
 require 'xcover'
 
-Xcover::Html.new.generate # This takes the default config file named `xcover.yml`
+Xcover::Html.new.generate # This takes the default config file named `.xcover.yml`
 ```
 
 For the custom config file, pass the name/path when instantiate the class
