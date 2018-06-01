@@ -9,4 +9,3 @@ module Xcover
   autoload :Html, 'xcover/html'
   autoload :Config, 'xcover/config'
 end
-

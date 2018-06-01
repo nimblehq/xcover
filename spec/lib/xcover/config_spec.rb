@@ -29,4 +29,3 @@ describe Xcover::Config do
     YAML.load_file('spec/fixtures/xcover.yml')
   end
 end
-

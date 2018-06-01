@@ -9,21 +9,21 @@ describe Xcover::Base do
       allow_any_instance_of(subject.class).to receive(:raw_report).and_return(
         [
           {
-            "files" => [
+            'files' => [
               {
-                "lineCoverage" => 0.1,
-                "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
-                "name" => 'LocalAttractionDetailInfoModel.swift',
+                'lineCoverage' => 0.1,
+                'path' => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
+                'name' => 'LocalAttractionDetailInfoModel.swift'
               },
               {
-                "lineCoverage" => 0.2,
-                "path" => 'RedPlanet/Detail/LocalAttractionListModel.swift',
-                "name" => 'LocalAttractionListModel.swift',
+                'lineCoverage' => 0.2,
+                'path' => 'RedPlanet/Detail/LocalAttractionListModel.swift',
+                'name' => 'LocalAttractionListModel.swift'
               },
               {
-                "lineCoverage" => 0.3,
-                "path" => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
-                "name" => 'LocalAttractionTableViewCell.swift',
+                'lineCoverage' => 0.3,
+                'path' => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
+                'name' => 'LocalAttractionTableVibase.rbewCell.swift'
               }
             ]
           }
@@ -42,19 +42,19 @@ describe Xcover::Base do
         ignored_patterns = ['*/List/*']
         files = [
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
-            "name" => 'LocalAttractionDetailInfoModel.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
+            'name' => 'LocalAttractionDetailInfoModel.swift'
           },
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/Detail/LocalAttractionListModel.swift',
-            "name" => 'LocalAttractionListModel.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/Detail/LocalAttractionListModel.swift',
+            'name' => 'LocalAttractionListModel.swift'
           },
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
-            "name" => 'LocalAttractionTableViewCell.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/List/LocalAttractionTableViewCell.swift',
+            'name' => 'LocalAttractionTableViewCell.swift'
           }
         ]
         filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
@@ -70,14 +70,14 @@ describe Xcover::Base do
         ignored_patterns = ['*.json']
         files = [
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
-            "name" => 'LocalAttractionDetailInfoModel.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
+            'name' => 'LocalAttractionDetailInfoModel.swift'
           },
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/Detail/hotel.json',
-            "name" => 'hotel.json'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/Detail/hotel.json',
+            'name' => 'hotel.json'
           }
         ]
         filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
@@ -92,14 +92,14 @@ describe Xcover::Base do
         ignored_patterns = ['*Attraction*']
         files = [
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
-            "name" => 'LocalAttractionDetailInfoModel.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift',
+            'name' => 'LocalAttractionDetailInfoModel.swift'
           },
           {
-            "lineCoverage" => 0,
-            "path" => 'RedPlanet/AttractionDetail/LocalAttraction.swift',
-            "name" => 'LocalAttraction.swift'
+            'lineCoverage' => 0,
+            'path' => 'RedPlanet/AttractionDetail/LocalAttraction.swift',
+            'name' => 'LocalAttraction.swift'
           }
         ]
         filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
