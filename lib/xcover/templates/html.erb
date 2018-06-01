@@ -135,7 +135,7 @@
       <tbody>
       <% processed_report_files.each do |file| %>
         <tr>
-          <td class="file-name ext-<%= File.extname(file['name']) %>"><span><%= file['name'] %></span></td>
+          <td class="file-name ext-<%= File.extname(file['name'])&.delete('.') %>"><span><%= file['name'] %></span></td>
           <td class="file-coverage-progress">
             <div class="progress">
               <div class="progress-bar" style="width:<%= file['lineCoveragePercentage'] %>%"></div>
