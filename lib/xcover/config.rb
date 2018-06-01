@@ -21,4 +21,3 @@ module Xcover
     end
   end
 end
-

@@ -1,5 +1,4 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'xcover/version'
 
@@ -9,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Nimbl3']
   spec.email         = ['dev@nimbl3.com']
 
-  spec.summary       = %q{Generate the xccov report in html format}
-  spec.description   = %q{Generate the xccov report in html format}
+  spec.summary       = 'Generate the xccov report in html format'
+  spec.description   = 'Generate the xccov report in html format'
   spec.homepage      = 'https://github.com/nimbl3/xcover'
   spec.license       = 'MIT'
 
@@ -23,7 +22,7 @@ Gem::Specification.new do |spec|
       'public gem pushes.'
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+  spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = 'bin'
@@ -34,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.10.4'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.7'
+  spec.add_development_dependency 'rubocop', '~> 0.56.0'
 end
