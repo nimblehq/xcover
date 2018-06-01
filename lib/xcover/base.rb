@@ -2,10 +2,13 @@ module Xcover
   class Base
     extend Forwardable
 
+    attr_reader :current_working_dir
+
     def_delegators :config, :target_name, :display_name, :display_logo, :derived_data_dir, :output_dir, :ignored_patterns
 
     def initialize(config_file_path = '.xcover.yml')
       @config = Config.new(config_file_path)
+      @current_working_dir = File.dirname(config_file_path)
     end
 
     def generate

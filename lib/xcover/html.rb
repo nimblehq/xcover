@@ -13,7 +13,8 @@ module Xcover
     private
 
     def export_assets
-      FileUtils.cp(display_logo, output_dir) if display_logo && File.exist?(display_logo)
+      logo_file_path = File.expand_path(current_working_dir, display_logo)
+      FileUtils.cp(logo_file_path, output_dir) if display_logo && File.exist?(display_logo)
       FileUtils.cp("#{__dir__}/templates/styles.css", output_dir)
       FileUtils.cp_r("#{__dir__}/templates/images/", output_dir)
     end

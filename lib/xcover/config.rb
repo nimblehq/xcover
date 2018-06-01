@@ -2,8 +2,6 @@ module Xcover
   class Config < ::SimpleDelegator
     def initialize(config_file_path)
       super YAML.load_file(config_file_path)
-
-      @config_file_path = File.expand_path(config_file_path)
     end
 
     def target_name
@@ -15,10 +13,7 @@ module Xcover
     end
 
     def display_logo
-      logo = self['display_logo']
-      return logo if logo.nil? || Xcover::Utils.url?(logo)
-
-      File.expand_path(File.dirname(config_file_path), logo)
+      self['display_logo']
     end
 
     def derived_data_dir
@@ -32,9 +27,5 @@ module Xcover
     def ignored_patterns
       self['ignore']
     end
-
-    private
-
-    attr_reader :config_file_path
   end
 end
