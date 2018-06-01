@@ -40,7 +40,7 @@ To generate the HTML page, there are 2 ways, either using through CLI or Ruby cl
 
 #### CLI Usage
 
-The command will take a default config file named `xcover.yml` and generate the HTML report page to the output directory
+The command will take a default config file named `.xcover.yml` and generate the HTML report page to the output directory
 
 ```
 xcover
@@ -51,7 +51,7 @@ xcover
 ```ruby
 require 'xcover'
 
-Xcover::Html.new.generate # This takes the default config file named `xcover.yml`
+Xcover::Html.new.generate # This takes the default config file named `.xcover.yml`
 ```
 
 For the custom config file, pass the name/path when instantiate the class
