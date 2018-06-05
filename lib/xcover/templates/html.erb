@@ -30,7 +30,7 @@
           <td class="file-name ext-<%= File.extname(file['name'])&.delete('.') %>"><span><%= file['name'] %></span></td>
           <td class="file-coverage-progress">
             <div class="progress">
-              <div class="progress-bar" style="width:<%= file['lineCoveragePercentage'] %>%"></div>
+              <div class="progress-bar" style="width:<%= file['lineCoveragePercentage'] %>%!important"></div>
             </div>
           </td>
           <td class="file-coverage"><%= file['lineCoveragePercentage'] %>%</td>
