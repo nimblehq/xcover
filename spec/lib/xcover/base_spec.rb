@@ -1,6 +1,24 @@
 describe Xcover::Base do
   subject { described_class.new('spec/fixtures/xcover.yml') }
 
+  describe '#generate' do
+    it 'builds the report if coverage report exist' do
+      allow(Dir).to receive(:glob).and_return(['coverage.xccovreport'])
+
+      expect(subject).to receive(:build_report)
+
+      subject.generate
+    end
+
+    it 'does NOT build the report if coverage report exist' do
+      allow(Dir).to receive(:glob).and_return([])
+
+      expect(subject).not_to receive(:build_report)
+
+      subject.generate
+    end
+  end
+
   describe '#processed_report_files' do
     it 'returns all filtered files with assigned line coverage percentage' do
       config = instance_double(Xcover::Config)

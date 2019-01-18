@@ -1,9 +1,8 @@
 require 'erb'
-require 'fileutils'
 
 module Xcover
   class Html < Base
-    def generate
+    def build_report
       Dir.mkdir(output_dir) unless Dir.exist?(output_dir)
 
       export_report_page

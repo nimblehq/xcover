@@ -1,8 +1,8 @@
 describe Xcover::Html do
-  describe '#generate' do
+  describe '#build_report' do
     it 'generates a index.html file' do
       allow_any_instance_of(described_class).to receive(:raw_report).and_return(mocked_raw_report)
-      described_class.new('spec/fixtures/xcover.yml').generate
+      described_class.new('spec/fixtures/xcover.yml').build_report
 
       output_dir = mocked_configuration['output_directory']
       expect(File.exist?("#{output_dir}/index.html")).to be true

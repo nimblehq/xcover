@@ -16,7 +16,7 @@ module Xcover
       self['display_logo']
     end
 
-    def derived_data_dir
+    def coverage_report_glob
       "#{self['derived_data_directory']}/Logs/Test/*.xccovreport"
     end
 

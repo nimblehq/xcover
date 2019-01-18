@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Xcover
   class Base
     extend Forwardable
@@ -5,7 +7,7 @@ module Xcover
     attr_reader :current_working_dir
 
     def_delegators :config, :target_name, :display_name, :display_logo,
-                   :derived_data_dir, :output_dir, :ignored_patterns
+                   :coverage_report_glob, :output_dir, :ignored_patterns
 
     def initialize(config_file_path = '.xcover.yml')
       @config = Config.new(config_file_path)
@@ -13,14 +15,18 @@ module Xcover
     end
 
     def generate
+      return true if Dir.glob(coverage_report_glob).empty?
+
+      build_report
+    end
+
+    def build_report
       puts
       puts "Target Name: #{target_name}"
       puts "Code Coverage: #{code_coverage_percentage}%"
       puts '-----------------------------------------'
       processed_report_files.map { |file| puts "#{file['name']} #{file['lineCoveragePercentage']}%" }
       puts
-
-      true
     end
 
     private
@@ -74,7 +80,7 @@ module Xcover
     end
 
     def raw_report
-      report_result = `xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir} --json`
+      report_result = `xcrun xccov view --files-for-target "#{target_name}" #{coverage_report_glob} --json`
       @raw_report ||= JSON.parse(report_result)
     end
   end
