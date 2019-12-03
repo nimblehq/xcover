@@ -4,7 +4,11 @@ describe Xcover::Html do
       allow_any_instance_of(described_class).to receive(:raw_report).and_return(mocked_raw_report)
       described_class.new('spec/fixtures/xcover.yml').generate
 
-      expect(File.exist?("#{mocked_configuration['output_directory']}/index.html")).to be true
+      output_dir = mocked_configuration['output_directory']
+      expect(File.exist?("#{output_dir}/index.html")).to be true
+      expect(File.exist?("#{output_dir}/styles.css")).to be true
+      expect(Dir.exist?("#{output_dir}/images")).to be true
+      expect(Dir["#{output_dir}/images"].length).to eq Dir['lib/xcover/templates/images'].length
     end
   end
 

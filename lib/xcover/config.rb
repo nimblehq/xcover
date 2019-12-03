@@ -8,6 +8,14 @@ module Xcover
       self['target_name']
     end
 
+    def display_name
+      self['display_name'] || target_name
+    end
+
+    def display_logo
+      self['display_logo']
+    end
+
     def derived_data_dir
       "#{self['derived_data_directory']}/Logs/Test/*.xccovreport"
     end
@@ -21,4 +29,3 @@ module Xcover
     end
   end
 end
-
