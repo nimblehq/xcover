@@ -4,7 +4,7 @@ require 'fileutils'
 module Xcover
   class Html < Base
     def generate
-      Dir.mkdir(output_dir) unless Dir.exist?(output_dir)
+      FileUtils.mkdir_p(output_dir) unless Dir.exist?(output_dir)
 
       export_report_page
       export_assets

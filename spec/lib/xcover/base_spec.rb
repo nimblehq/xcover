@@ -39,7 +39,7 @@ describe Xcover::Base do
   describe '#filtered_report_files' do
     context 'directory filtering' do
       it 'ignores all the files in the directory' do
-        ignored_patterns = ['*/List/*']
+        allow(subject).to receive(:ignored_patterns).and_return(['*/List/*'])
         files = [
           {
             'lineCoverage' => 0,
@@ -57,7 +57,7 @@ describe Xcover::Base do
             'name' => 'LocalAttractionTableViewCell.swift'
           }
         ]
-        filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
+        filtered_files = subject.send('filtered_report_files', files)
 
         expect(filtered_files.count).to eq 2
         expect(filtered_files[0]['path']).to eq 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift'
@@ -67,7 +67,7 @@ describe Xcover::Base do
 
     context 'file extension filtering' do
       it 'ignores all the file with the extension' do
-        ignored_patterns = ['*.json']
+        allow(subject).to receive(:ignored_patterns).and_return(['*.json'])
         files = [
           {
             'lineCoverage' => 0,
@@ -80,7 +80,7 @@ describe Xcover::Base do
             'name' => 'hotel.json'
           }
         ]
-        filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
+        filtered_files = subject.send('filtered_report_files', files)
 
         expect(filtered_files.count).to eq 1
         expect(filtered_files[0]['path']).to eq 'RedPlanet/Detail/LocalAttractionDetailInfoModel.swift'
@@ -89,7 +89,7 @@ describe Xcover::Base do
 
     context 'path and name filtering' do
       it 'ignores the files and directories that is matched with the pattern' do
-        ignored_patterns = ['*Attraction*']
+        allow(subject).to receive(:ignored_patterns).and_return(['*Attraction*'])
         files = [
           {
             'lineCoverage' => 0,
@@ -102,7 +102,7 @@ describe Xcover::Base do
             'name' => 'LocalAttraction.swift'
           }
         ]
-        filtered_files = subject.send('filtered_report_files', files, ignored_patterns)
+        filtered_files = subject.send('filtered_report_files', files)
 
         expect(filtered_files.count).to eq 0
       end

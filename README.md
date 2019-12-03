@@ -2,6 +2,10 @@
 
 Generate a HTML page from Xcode unit test coverage statistics
 
+## Prerequisite
+- [Xcode CLI](https://developer.apple.com/xcode/)
+- [XCParse](https://github.com/ChargePoint/xcparse)
+
 ## Installation
 
 Add this line to your application's Gemfile:

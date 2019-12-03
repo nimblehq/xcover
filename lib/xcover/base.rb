@@ -43,16 +43,18 @@ module Xcover
       return cached_processed_report_files unless cached_processed_report_files.nil?
 
       report_files = raw_report.first.fetch('files', [])
-      processed_ignored_patterns = ignored_patterns&.map { |pattern| glob_pattern(pattern) }&.uniq || []
 
       # rubocop:disable Naming/MemoizedInstanceVariableName
       @cached_processed_report_files ||=
-        assign_line_coverage_percentage(filtered_report_files(report_files, processed_ignored_patterns))
+        assign_line_coverage_percentage(filtered_report_files(report_files))
+        .sort { |a, b| a['lineCoveragePercentage'].to_f <=> b['lineCoveragePercentage'].to_f }
       # rubocop:enable Naming/MemoizedInstanceVariableName
     end
 
-    def filtered_report_files(files, ignored_patterns)
-      ignored_patterns.each do |pattern|
+    def filtered_report_files(files)
+      processed_ignored_patterns = ignored_patterns&.map { |pattern| glob_pattern(pattern) }&.uniq || []
+
+      processed_ignored_patterns.each do |pattern|
         files.reject! { |file| File.fnmatch(pattern, file['path']) }
       end
 
@@ -73,8 +75,16 @@ module Xcover
       pattern
     end
 
+    def convert_xcreport_to_xccovresult
+      `xcparse codecov #{derived_data_dir_log_test}/*.xcresult #{derived_data_dir_log_test}`
+    end
+
     def raw_report
-      report_result = `xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir} --json`
+      convert_xcreport_to_xccovresult
+      # rubocop:disable Metrics/LineLength
+      report_result = `xcrun xccov view --files-for-target "#{target_name}" #{derived_data_dir_log_test}/*.xccovreport --json`
+      # rubocop:enable Metrics/LineLength
+
       @raw_report ||= JSON.parse(report_result)
     end
   end
