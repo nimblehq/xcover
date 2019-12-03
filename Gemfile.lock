@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xcover (0.11.0)
+    xcover (0.11.1)
 
 GEM
   remote: https://rubygems.org/
