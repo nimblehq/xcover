@@ -13,7 +13,15 @@ describe Xcover::Config do
     it 'returns a derived data directory configuration' do
       configuration = described_class.new(subject)
 
-      expect(configuration.derived_data_dir).to eq "#{mocked_configuration(subject)['derived_data_directory']}/Logs/Test/*.xccovreport"
+      expect(configuration.derived_data_dir).to eq mocked_configuration(subject)['derived_data_directory'].to_s
+    end
+  end
+
+  describe '#derived_data_dir_log_test' do
+    it 'returns a derived data directory log test configuration' do
+      configuration = described_class.new(subject)
+
+      expect(configuration.derived_data_dir_log_test).to eq "#{mocked_configuration(subject)['derived_data_directory']}/Log/Test"
     end
   end
 
