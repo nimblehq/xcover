@@ -1,3 +1,3 @@
 module Xcover
-  VERSION = '0.2.0'.freeze
+  VERSION = '0.11.0'.freeze
 end

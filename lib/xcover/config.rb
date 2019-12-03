@@ -17,7 +17,11 @@ module Xcover
     end
 
     def derived_data_dir
-      "#{self['derived_data_directory']}/Logs/Test/*.xccovreport"
+      (self['derived_data_directory']).to_s
+    end
+
+    def derived_data_dir_log_test
+      "#{derived_data_dir}/Log/Test"
     end
 
     def output_dir
