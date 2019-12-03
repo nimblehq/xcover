@@ -21,7 +21,7 @@ module Xcover
     end
 
     def derived_data_dir_log_test
-      "#{derived_data_dir}/Log/Test"
+      "#{derived_data_dir}/Logs/Test"
     end
 
     def output_dir
