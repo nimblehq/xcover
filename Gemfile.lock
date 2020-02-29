@@ -19,7 +19,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -50,7 +50,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.14)
   pry (~> 0.10.4)
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.7)
   rubocop (~> 0.56.0)
   xcover!
